@@ -1,0 +1,123 @@
+AIR UNIVERSITY ISLAMABAD – KAMRA CAMPUS CS-402L: DATA SCIENCE LAB LAB 9:
+LINEAR AND POLYNOMIAL REGRESSION, CROSS-VALIDATION, AND RIDGE GRID
+SEARCH
+
+Student Name: Noor-ul-ain
+Registration No.: 235135
+Semester: CS-VII
+
+============================================================
+TASK 1 – ESTIMATE HOUSING PRICES NEAR TRANSIT
+============================================================
+
+Objective: To predict house price per unit area using the distance to
+the nearest MRT station.
+
+Task 1(a): Fit Linear Regression The Linear Regression model was trained
+using 414 housing records.
+
+Results: Slope: -0.7262 Intercept: 45.8514
+
+Explanation: The slope is negative. This means that for every additional
+100 meters from the nearest metro station, the predicted house price per
+unit area decreases by approximately 0.73 price units.
+
+Task 1(b): Predict Price at 500 Meters Distance from the nearest metro
+station: 500 meters Input distance in 100-meter units: 5 Predicted house
+price per unit area: 42.2204 (approximately 42.22)
+
+Task 1(c): Plot and Explanation A scatter plot was created to show the
+actual housing observations. A fitted regression line was added to show
+the relationship between distance from the MRT station and house price.
+The graph was saved as: task1_housing.png
+
+============================================================ 
+TASK 2 – COMPARE MODELS FOR YACHT RESISTANCE
+============================================================
+
+Objective: To predict residuary resistance per unit displacement weight
+using the Froude number and compare Linear Regression with Quadratic
+Polynomial Regression.
+
+Task 2(a): Build the Models Two models were created: 1. Linear
+Regression 2. Degree-2 Polynomial Regression using PolynomialFeatures
+and Pipeline
+
+Task 2(b): Five-Fold Cross-Validation
+
+Linear Regression: Fold RMSEs: 8.16, 10.57, 9.84, 8.38, 7.78 Mean RMSE:
+8.95
+
+Quadratic Polynomial Regression: Fold RMSEs: 3.93, 4.59, 4.45, 4.49,
+3.50 Mean RMSE: 4.19
+
+Task 2(c): Model Selection Quadratic Polynomial Regression was selected
+as the better model because its mean RMSE (4.19) is lower than the
+Linear Regression mean RMSE (8.95).
+
+Python file: task2_yacht.py
+
+============================================================
+TASK 3 – TUNE A CONCRETE STRENGTH MODEL
+============================================================
+
+Objective: To predict concrete compressive strength in MPa using the
+seven ingredients and curing age.
+
+Task 3(a): Data Split and Linear Regression Baseline After removing
+duplicate rows: Training rows: 804 Testing rows: 201
+
+Linear Regression fold RMSEs: 10.10, 10.18, 10.05, 10.18, 10.49
+
+Baseline mean CV RMSE: 10.20 MPa
+
+Task 3(b): Tune Polynomial Ridge Regression GridSearchCV tested
+polynomial degrees 1, 2, and 3 with Ridge alpha values 0.01, 0.1, 1, 10,
+and 100.
+
+Best parameters: Polynomial degree: 3 Ridge alpha: 0.1
+
+Best mean CV RMSE: 6.09 MPa
+
+Three highest-ranked settings: 1. Degree 3, alpha 0.1, mean CV RMSE 6.09
+MPa, rank 1 2. Degree 3, alpha 0.01, mean CV RMSE 6.16 MPa, rank 2 3.
+Degree 3, alpha 1.0, mean CV RMSE 6.27 MPa, rank 3
+
+Task 3(c): Test Set Evaluation Test RMSE: 6.52 MPa Test MAE: 4.67 MPa
+
+A plot was created with actual concrete strength on the horizontal axis
+and predicted concrete strength on the vertical axis. A y = x reference
+line was included. The graph was saved as: task3_concrete.png
+
+Task 3(d): Comparison and Explanation Baseline mean CV RMSE: 10.20 MPa
+Tuned mean CV RMSE: 6.09 MPa
+
+The tuned Ridge model performs better because it has a lower mean
+cross-validation RMSE than the Linear Regression baseline.
+
+Example of a degree-2 interaction term: Cement x Water
+
+Explanation of scaling: Scaling puts features on a similar scale. It
+prevents large-valued features from dominating Ridge regularization.
+
+============================================================ 
+CONCLUSION
+============================================================
+
+In Task 1, Linear Regression was used to estimate housing prices from
+distance to the nearest metro station. The predicted price at 500 meters
+was approximately 42.22 price units.
+
+In Task 2, Quadratic Polynomial Regression performed better than Linear
+Regression because it achieved a lower mean cross-validation RMSE.
+
+In Task 3, GridSearchCV selected a degree-3 Polynomial Ridge model with
+alpha 0.1. The tuned model achieved a lower mean CV RMSE than the Linear
+Regression baseline, and its test RMSE was 6.52 MPa.
+
+============================================================ 
+FILES CREATED 
+============================================================
+
+task1_housing.py task1_housing.png task2_yacht.py task3_concrete.py
+task3_concrete.png lab9_notes.txt
